@@ -9,33 +9,29 @@ export class SignUpValidators {
 
    static usernameValidator(authService: AuthService): AsyncValidatorFn {
       return (control: AbstractControl): Observable<ValidationErrors | null> => {
-         return timer(500)
-            .pipe(
-               switchMap(() => {
-                  return authService.checkUsername(control.value)
-                     .pipe(
-                        map(isUsernameAvailable => {
-                           return isUsernameAvailable ? null : { 'usernameTaken': true };
-                        })
-                     );
-               })
-            );
+         return timer(500).pipe(
+            switchMap(() => {
+               return authService.checkUsername(control.value).pipe(
+                  map(isUsernameAvailable => {
+                     return isUsernameAvailable ? null : { 'usernameTaken': true };
+                  })
+               );
+            })
+         );
       };
    }
 
    static emailValidator(authService: AuthService): AsyncValidatorFn {
       return (control: AbstractControl): Observable<ValidationErrors | null> => {
-         return timer(500)
-            .pipe(
-               switchMap(() => {
-                  return authService.checkEmail(control.value)
-                     .pipe(
-                        map(isEmailAvailable => {
-                           return isEmailAvailable ? null : { 'emailTaken': true };
-                        })
-                     );
-               })
-            );
+         return timer(500).pipe(
+            switchMap(() => {
+               return authService.checkEmail(control.value).pipe(
+                  map(isEmailAvailable => {
+                     return isEmailAvailable ? null : { 'emailTaken': true };
+                  })
+               );
+            })
+         );
       };
    }
 
