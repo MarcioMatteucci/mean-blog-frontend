@@ -7,9 +7,11 @@ import { SignUpValidators } from '../auth.validators';
 @Component({
    selector: 'blog-sign-up',
    templateUrl: './sign-up.component.html',
-   styles: []
+   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
+
+   showPassword = false;
 
    emailRegExp = new RegExp(/^([a-z\d\.-_]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/);
 

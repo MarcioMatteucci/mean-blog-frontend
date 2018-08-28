@@ -19,8 +19,10 @@
 
             <div class="invalid-feedback ml-5" *ngIf="username.invalid && (username.dirty || username.touched)">
                <p *ngIf="username.hasError('required')">El campo es requerido.</p>
-               <p *ngIf="username.hasError('minlength') || username.hasError('maxlength')">El campo debe tener entre 3 y 50 caracteres.</p>
-               <p *ngIf="username.hasError('usernameTaken') && !username.hasError('required')">El nombre de usuario esta en uso.</p>
+               <p *ngIf="username.hasError('minlength') || username.hasError('maxlength')">El campo debe tener entre 3 y
+                  50 caracteres.</p>
+               <p *ngIf="username.hasError('usernameTaken') && !username.hasError('required')">El nombre de usuario esta
+                  en uso.</p>
             </div>
 
          </div>
@@ -42,12 +44,21 @@
                   </div>
 
                   <input [ngClass]="{ 'is-invalid': password.invalid && (password.dirty || password.touched), 'is-valid': password.valid && (password.dirty || password.touched) }"
-                     type="password" class="form-control" autocomplete="off" placeholder="Contraseña" formControlName="password">
+                     [type]="showPassword ? 'text' : 'password'" class="form-control" autocomplete="off" placeholder="Contraseña"
+                     formControlName="password">
+
+                  <div class="input-group-append password-visibility" (click)="showPassword = !showPassword">
+                     <span class="input-group-text">
+                        <i class="fa fa-{{ showPassword ? 'eye-slash' : 'eye' }}" aria-hidden="true"></i>
+                     </span>
+                  </div>
 
                   <div class="invalid-feedback d-flex ml-5" *ngIf="password.invalid && (password.dirty || password.touched)">
                      <p *ngIf="password.hasError('required')">El campo es requerido.</p>
-                     <p *ngIf="password.hasError('minlength') || password.hasError('maxlength')">El campo debe tener entre 6 y 30 caracteres.</p>
-                     <p *ngIf="password.hasError('pattern') && !(password.hasError('required') || password.hasError('minlength') || password.hasError('maxlength'))">No se permiten caracteres especiales. Solo números y/o letras.</p>
+                     <p *ngIf="password.hasError('minlength') || password.hasError('maxlength')">El campo debe tener entre
+                        6 y 30 caracteres.</p>
+                     <p *ngIf="password.hasError('pattern') && !(password.hasError('required') || password.hasError('minlength') || password.hasError('maxlength'))">No
+                        se permiten caracteres especiales. Solo números y/o letras.</p>
                   </div>
 
                </div>
@@ -69,7 +80,14 @@
                   </div>
 
                   <input [ngClass]="{ 'is-invalid': signUpForm.hasError('passwordsDontMatch') && (confirmPassword.dirty || confirmPassword.touched) || password.invalid && (password.dirty || password.touched), 'is-valid': !signUpForm.hasError('passwordsDontMatch') && (confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)) }"
-                     type="password" class="form-control" autocomplete="off" placeholder="Confirmar Contraseña" formControlName="confirmPassword">
+                     [type]="showPassword ? 'text' : 'password'" class="form-control" autocomplete="off" placeholder="Confirmar Contraseña"
+                     formControlName="confirmPassword">
+
+                  <div class="input-group-append password-visibility" (click)="showPassword = !showPassword">
+                     <span class="input-group-text">
+                        <i class="fa fa-{{ showPassword ? 'eye-slash' : 'eye' }}" aria-hidden="true"></i>
+                     </span>
+                  </div>
 
                   <div class="invalid-feedback d-flex ml-5" *ngIf="signUpForm.hasError('passwordsDontMatch') && (confirmPassword.dirty || confirmPassword.touched)">
                      <p *ngIf="signUpForm.hasError('passwordsDontMatch')">Las contraseñas no coinciden.</p>
@@ -134,7 +152,9 @@
 
                   <div class="invalid-feedback d-flex ml-5" *ngIf="name.invalid && (name.dirty || name.touched)">
                      <p *ngIf="name.hasError('required')">El campo es requerido.</p>
-                     <p *ngIf="name.hasError('minlength') || name.hasError('maxlength')">El campo debe tener entre 2 y 30 caracteres.</p>
+                     <p *ngIf="name.hasError('minlength') || name.hasError('maxlength')">El campo debe tener entre 2 y 30
+                        caracteres.
+                     </p>
                   </div>
 
                </div>
@@ -160,7 +180,8 @@
 
                   <div class="invalid-feedback d-flex ml-5" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
                      <p *ngIf="lastname.hasError('required')">El campo es requerido.</p>
-                     <p *ngIf="lastname.hasError('minlength') || lastname.hasError('maxlength')">El campo debe tener entre 2 y 50 caracteres.</p>
+                     <p *ngIf="lastname.hasError('minlength') || lastname.hasError('maxlength')">El campo debe tener entre
+                        2 y 50 caracteres.</p>
                   </div>
 
                </div>
